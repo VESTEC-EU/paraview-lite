@@ -1,7 +1,7 @@
 export default {
   name: 'CinemaFiles',
   icon: 'mdi-folder',
-  label: 'Cinema',
+  label: 'Open',
   priority: 100,
   isRoot() {
     return true;

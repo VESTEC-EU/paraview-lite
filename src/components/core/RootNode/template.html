@@ -51,15 +51,16 @@
       <span>{{ errors.length }}</span>
       <span v-show="!smallScreen">error(s)</span>
     </v-btn>
-    <v-btn
-      :class="$style.toolbarButton"
-      flat
-      v-on:click="aboutDialog = true"
-    >
-      <!-- width of other icons in toolbar -->
-      <svg-icon icon="kitware-logo" width="24px" />
-      <span v-show="!smallScreen">About</span>
-    </v-btn>
+    <!-- hide about button -->
+    <!-- <v-btn -->
+    <!--   :class="$style.toolbarButton" -->
+    <!--   flat -->
+    <!--   v-on:click="aboutDialog = true" -->
+    <!-- > -->
+    <!--   <!-1- width of other icons in toolbar -1-> -->
+    <!--   <svg-icon icon="kitware-logo" width="24px" /> -->
+    <!--   <span v-show="!smallScreen">About</span> -->
+    <!-- </v-btn> -->
   </v-toolbar>
 
   <v-content :class="$style.appContent">
