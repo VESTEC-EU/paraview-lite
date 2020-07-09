@@ -44,9 +44,25 @@ class ParaViewWebCinemaReader(pv_protocols.ParaViewWebProtocol):
                     reader = simple.OpenDataFile(filePath)
                     simple.HideAll()
                     simple.Delete()
-                    simple.Show(reader)
-                    simple.Render()
+
+                    readerDisplay = simple.Show(reader)
+                    simple.ColorBy(readerDisplay, ('POINTS', 'CriticalType') )
+                    renderView1 = simple.GetActiveView()
+                    readerDisplay.RescaleTransferFunctionToDataRange(True, False)
+                    readerDisplay.SetScalarBarVisibility(renderView1, True)
+                    readerDisplay.RenderLinesAsTubes = 1
+                    readerDisplay.LineWidth = 2
+
+                    # create pass array filter to display points
+                    passArrays1 = simple.PassArrays(registrationName='PassArrays1', Input=reader)
+                    passArrays1Display = simple.Show()
+                    passArrays1Display.SetRepresentationType('Point Gaussian')
+
+                    # set scalar coloring
+                    simple.ColorBy(passArrays1Display, None)
+
                     simple.ResetCamera()
+                    simple.Render()
                     if self.getApplication():
                         self.getApplication().InvokeEvent('UpdateEvent')
 
