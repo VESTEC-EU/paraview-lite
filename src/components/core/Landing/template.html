@@ -1,5 +1,5 @@
 <div :class="['grey lighten-3', $style.root]">
-  <v-responsive color="grey darken-3" :height="smallScreen ? 'auto' : '250px'" :class="$style.jumbotron">
+  <!--<v-responsive color="grey darken-3" :height="smallScreen ? 'auto' : '250px'" :class="$style.jumbotron">
     <v-container fill-height>
       <v-layout row align-center wrap>
         <v-flex
@@ -19,7 +19,6 @@
             </v-card-text>
           </v-card>
         </v-flex>
-        <!-- iPads have width 768, so show controls on them -->
         <v-flex
           key="if-large-enough-screen"
           :xs4="!smallScreen"
@@ -40,13 +39,13 @@
         </v-flex>
       </v-layout>
     </v-container>
-  </v-responsive>
+  </v-responsive>-->
   <v-container
     :class="$style.noSelect"
     grid-list-xl
   >
     <v-layout row wrap>
-      <v-flex
+      <!--<v-flex
         :xs4="$vuetify.breakpoint.mdAndUp"
         :xs6="$vuetify.breakpoint.sm"
         :xs12="$vuetify.breakpoint.xs"
@@ -71,12 +70,9 @@
             </v-card-actions>
           </v-card>
         </v-hover>
-      </v-flex>
+      </v-flex>-->
 
-      <v-flex
-        :xs4="$vuetify.breakpoint.mdAndUp"
-        :xs6="$vuetify.breakpoint.sm"
-        :xs12="$vuetify.breakpoint.xs"
+      <v-flex xs12
       >
         <v-hover>
           <v-card
@@ -86,29 +82,29 @@
             slot-scope="{ hover }"
           >
             <v-card-title primary-title>
-              <div class="headline">Connect to Session</div>
+              <div class="headline">Connect to ParaView server</div>
             </v-card-title>
             <v-card-text class="pt-0" style="height: 150px;">
               <v-text-field
-                v-model="sessionURL"
-                label="Session URL"
-                hint="ws://pvw.services.com/proxy?sessionId=2f88012a0e9c3292297098ca5fa49b16"
+                v-model="sessionIP"
+                label="Server host"
+                hint="localhost"
               ></v-text-field>
               <v-text-field
-                v-model="token"
-                label="Token"
+                v-model="sessionPort"
+                label="Port"
                 hide-details
               ></v-text-field>
             </v-card-text>
             <v-card-actions>
               <v-spacer/>
-              <v-btn @click="connectToSession">Connect</v-btn>
+              <v-btn @click="connectToHost">Connect</v-btn>
             </v-card-actions>
           </v-card>
         </v-hover>
       </v-flex>
 
-      <v-flex
+      <!--<v-flex
         :xs4="$vuetify.breakpoint.mdAndUp"
         :xs6="$vuetify.breakpoint.sm"
         :xs12="$vuetify.breakpoint.xs"
@@ -141,14 +137,14 @@
             </v-card-actions>
           </v-card>
         </v-hover>
-      </v-flex>
+      </v-flex>-->
 
-      <v-flex xs12>
+      <v-flex xs3>
         <v-img
           fill-height
           position="top center"
           max-height="360"
-          src="pv-lite-bg.jpg"
+          src="vestec-logo.png"
         />
       </v-flex>
     </v-layout>
