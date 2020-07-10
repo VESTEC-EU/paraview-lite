@@ -7,6 +7,8 @@ export default {
       token: null,
       sessionURL: null,
       sessionManagerURL: null,
+      sessionIP: null,
+      sessionPort: 22222,
     };
   },
   computed: {
@@ -40,6 +42,22 @@ export default {
         this.$emit('connect');
       } else {
         console.error('No Session URL provided');
+      }
+    },
+    connectToHost() {
+      if (this.sessionIP) {
+        const config = Object.assign(
+          {},
+          this.$store.getters.PVL_NETWORK_CONFIG,
+          {
+            sessionURL:
+              'ws://' + this.sessionIP + ':' + this.sessionPort + '/ws',
+          }
+        );
+        this.$store.commit('PVL_NETWORK_CONFIG_SET', config);
+        this.$emit('connect');
+      } else {
+        console.error('No Session Host provided');
       }
     },
     startSession() {
